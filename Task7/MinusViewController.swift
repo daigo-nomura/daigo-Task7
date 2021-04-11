@@ -12,15 +12,16 @@ class MinusViewController: UIViewController {
     @IBOutlet private var topTextfield: UITextField!
     @IBOutlet private var bottomTextfield: UITextField!
     @IBOutlet private var resultLabel: UILabel!
-    private var calculation = 0
-    
+
     @IBAction func resultButton(_ sender: Any) {
-        guard let topText = topTextfield.text else { return }
-        guard let bottomText = bottomTextfield.text else { return }
-        guard let topNum = Int(topText) else { return }
-        guard let bottomNum = Int(bottomText) else { return }
-        calculation = topNum - bottomNum
+        guard let topText = topTextfield.text,
+              let bottomText = bottomTextfield.text,
+              let topNum = Int(topText),
+              let bottomNum = Int(bottomText)
+              else { return }
+
+        let calculation = topNum - bottomNum
         resultLabel.text = String(calculation)
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }
